@@ -1,0 +1,16 @@
+@font-face {
+    font-family: chischort;
+    src: url(font/Inconsolata.otf);
+}
+
+html {
+    font-family: chischort;
+    background-image: linear-gradient(to right bottom, #f9d976, #fec976, #feb97a, #fbab80, #f39f86);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+}

@@ -1,0 +1,81 @@
+html {
+    position: relative;
+}
+
+body {
+    display: grid;
+    justify-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+img {
+    width: 45vw;
+    border-radius: 20px;
+    transform: translate(0px, 50px);
+    box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+}
+
+div.description {
+    width: 80vw;
+    background-color: white;
+    padding: 20px;
+    padding-top: 70px;
+    display: grid;
+    justify-items: center;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+}
+
+    i {
+        font-size: 50px;
+        color: #F8615A;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-top: 0;
+    }
+
+    p.bold {
+        font-size: 18px;
+    }
+
+    p.gray {
+        font-size: 15px;
+        opacity: 0.5;
+        text-align: center;
+    }
+
+    p.ticket-num {
+        font-size: 24px;
+        letter-spacing: 10px;
+    }
+
+div.hr {
+    display: flex;
+    width: 80vw;
+}
+
+hr {
+    width: 10px;
+    background-color: #202020;
+    border: 1px solid;
+    border-radius: 1px;
+    opacity: 0.5;
+}
+
+@media only screen and (max-height: 640px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        transform: translate(0px, -30px);
+        align-items: center;
+        justify-content: center;
+        position: static;
+        top: 0;
+        left: 0;
+    }
+}

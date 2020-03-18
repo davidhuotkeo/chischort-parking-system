@@ -1,0 +1,19 @@
+{% extends "template.html" %}
+
+{% block file %}
+<link rel="stylesheet" href="/static/css/login.css">
+{% endblock %}
+
+{% block title %} ChisChort Authentication {% endblock %}
+
+{% block body %}
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" method="POST">
+            <input type="text" placeholder="username" name="username"/>
+            <input type="password" placeholder="password" name="password"/>
+            <button type="submit">login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

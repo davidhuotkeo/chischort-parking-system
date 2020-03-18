@@ -1,0 +1,26 @@
+{% extends "template.html" %}
+
+{% block file %}
+    <link rel="stylesheet" href="/static/css/ticket.css">
+{% endblock %}
+
+{% block title %} ChisChort Ticket {% endblock %}
+
+{% block body %}
+    <img src="{{ _id }}" alt="qrcode">
+    <div class="description">
+        <i class="fas fa-parking"></i>
+        <p class="gray">{{ park.park.strftime("%c") }}</p>
+        <p class="bold">have a good parking experience</p>
+        <p class="gray">Please screenshot this to have a better experience with chischort service</p>
+        <p class="bold">lane {{ park.location }}</p>
+        <div class="hr">
+            {% for i in range(10) %}
+                <hr>
+            {% endfor %}
+        </div>
+        <p class="bold">Your Parking Number</p>
+        <p class="gray">This will be used when the unexpected<br>user error</p>
+        <p class="ticket-num">{{ ticket_num }}</p>
+    </div>
+{% endblock %}

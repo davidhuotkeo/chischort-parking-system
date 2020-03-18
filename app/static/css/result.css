@@ -1,0 +1,74 @@
+body {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 20vh 80vh;
+}
+
+.status-wrapper-tick {
+    width: 100%;
+    height: 20vh;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+p.status {
+    margin: 0;
+    margin-top: 10px;
+}
+
+.status-wrapper-times {
+    width: 100%;
+    height: 20vh;
+    background-color: #F8615A;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .result p {
+        font-size: 40px;
+        padding: 40px;
+        text-align: center;
+        margin: 0;
+        border: 2px solid #202020;
+        transform: translate(0px, -70px);
+    }
+
+    .result a {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: 20px;
+        color: white;
+        text-decoration: none;
+        width: 100%;
+        height: 20vh;
+        text-align: center;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .result a.tick {
+        background-color: #4CAF50;
+    }
+
+    .result a.times {
+        background-color: #F8615A;
+    }

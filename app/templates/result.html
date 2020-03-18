@@ -1,0 +1,33 @@
+{% extends "template.html" %}
+
+{% block file %}
+    <link rel="stylesheet" href="/static/css/result.css">
+{% endblock %}
+
+{% block title %} ChisChort Result {% endblock %}
+
+{% block body %}
+    {% if status == "" %}
+    <div class="status-wrapper-tick">
+        <i class="far fa-check-circle"></i>
+        <p class="status">Confirmed</p>
+    </div>
+    {% else %}
+    <div class="status-wrapper-times">
+        <i class="far fa-times-circle"></i>
+        <p class="status">{{ status }}</p>
+    </div>
+    {% endif %}
+<div class="result">
+    {% if price %}
+        <p>{{ price }}</p>
+    {% else %}
+        <p>Not Found</p>
+    {% endif %}
+    {% if status == "" %}
+        <a href="/scanner" class="tick">SCAN</a>
+    {% else %}
+        <a href="/scanner" class="times">SCAN</a>
+    {% endif %}
+</div>
+{% endblock %}

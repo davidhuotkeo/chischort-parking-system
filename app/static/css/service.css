@@ -1,0 +1,125 @@
+html {
+    display: grid;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 100px 43px 148px 100px auto;
+}
+
+div.welcome {
+    justify-self: center;
+    background-color: #202020;
+    color: white;
+    border-radius: 10px;
+    transform: translate(0px, 15px);
+    box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+}
+
+div.welcome p {
+    margin: 0;
+    padding: 13px 30px;
+}
+
+form {
+    display: grid;
+    width: 80vw;
+    height: 20vh;
+    background-color: white;
+    justify-self: center;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+}
+
+    form p {
+        margin: 0;
+        align-self: center;
+        opacity: 0.5;
+    }
+
+    label {
+        font-size: 20px;
+        align-self: center;
+        display: flex;
+        align-items: center;
+    }
+
+    input[type=radio] {
+        display: none;
+    }
+
+    label span {
+        position: relative;
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        border: 3px solid #F8615A;
+        margin-right: 20px;
+    }
+
+    span.inner {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background-color: #F8615A;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(175%, -50%) scale(0);
+        transition: all 0.5s ease-in-out;
+    }
+    
+    span#normal {
+        transform: translate(175%, -50%) scale(1);
+    }
+
+div.total p {
+    width: 70vw;
+    background-color: white;
+    padding: 20px 20px 20px 10px;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+}
+
+span.service {
+    display: none;
+}
+
+p > span {
+    color: #F39F86;
+}
+
+button {
+    position: absolute;
+    right: 0;
+    bottom: 20%;
+    padding: 0;
+    height: 50px;
+    width: 150px;
+    border: 0;
+    background-color: #202020;
+    border-radius: 10px 0 0 10px;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.75);
+}
+
+    button span {
+        width: 110px;
+    }
+
+    button i {
+        padding: 16px;
+        background-color: #F8615A;
+    }
+
+@media only screen and (min-height: 660px) {
+    body {
+        grid-template-rows: 150px 43px 25vh 100px auto;
+    }
+}

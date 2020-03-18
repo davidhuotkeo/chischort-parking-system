@@ -1,0 +1,47 @@
+{% extends "template.html" %}
+
+{% block file %}
+    <link rel="stylesheet" href="/static/css/service.css">
+{% endblock %}
+
+{% block title %} ChisChort Parking Service {% endblock %}
+
+{% block body %}
+<div class="logo"></div>
+<div class="welcome">
+    <p>Welcome to ChisChort</p>
+</div>
+<form method="post">
+    <p class="want">
+        Do you want to
+    </p>
+    <label>
+        <span>
+            <span class="inner" id="normal"></span>
+        </span>
+        <input type="radio" name="service" value="normal" id="normal" checked>
+        Normal Parking
+    </label>
+    <label>
+        <span>
+            <span class="inner" id="tire"></span>
+        </span>
+        <input type="radio" name="service" id="tire" value="tire">
+        Parking + Tires Check
+    </label>
+    <button type="submit">
+        <span>Submit</span>
+        <i class="fas fa-parking"></i>
+    </button>
+</form>
+<div class="total">
+    <p>
+        Total:
+        <span class="base">{{ base_price }}</span>(Base Price)
+        <span class="each">{{ each }}</span>(Each Hour)
+        <span class="service">200 (Service)</span>
+    </p>
+</div>
+
+<script src="/static/js/service.js"></script>
+{% endblock %}

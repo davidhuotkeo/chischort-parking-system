@@ -1,0 +1,16 @@
+{
+    "service": {
+        "normal": 0,
+        "tire": 200
+    },
+    "db": {
+        "user": "root",
+        "password": "Davidhuotkeo123",
+        "host": "localhost",
+        "database": "chischort"
+    },
+    "social": {
+        "email": "davidhuotkeo98@gmail.com",
+        "password": "Davidhuotkeo123"
+    }
+}
