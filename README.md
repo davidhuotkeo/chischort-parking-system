@@ -10,7 +10,7 @@
 ## Purposes
 We create this in order to **ease out** the street parking and **helping** the cambodia's traffic better in *the future*.
 
-# To do
+## To do
 We create this with **python** as backend.
 This makes it easier for us to inspect in each laptop locally.
 *Make sure you install python before running this*
@@ -29,7 +29,7 @@ python3 run.py
 python3 run.py
 ```
 
-# System Explaination
+## System Explaination
 How this work is
 1. People write their email (Bottom of homepage) to get email tickets from ChisChort (This is for the offline purpose / Prevent the lost of tickets if the user forgot to screen shot their ticket) [Optional]
 2. When People parked, they take out their camera's phone and scan the lane QRCode that they park to get the url for the ticket
