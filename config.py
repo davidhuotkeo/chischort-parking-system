@@ -15,3 +15,4 @@ class ProdConfig(Config):
     DEBUG = False
     TESTING = False
     ENV = "production"
+    SQLALCHEMY_POOL_RECYCLE = 299
