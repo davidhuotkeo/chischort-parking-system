@@ -30,10 +30,11 @@ from app.utils.file import service_parking
 # Home Route
 @app.route("/", methods=["GET", "POST"])
 def home():
+    email = session.get("email")
     if request.method == "POST":
         email = request.form.get("email")
         session["email"] = email
-    return render_template("index.html")
+    return render_template("index.html", email=email)
 
 # Service Route
 @app.route("/services/<token_id>", methods=["GET", "POST"])

@@ -93,13 +93,15 @@
         </div>
     </div>
     <footer>
-        <form method="post">
-            <label>Email</label>
-            <div class="form">
-                <input type="text" name="email" autocomplete="off">
-                <button type="submit" disabled>Send</button>
-            </div>
-        </form>
+        {% if email %}
+            <form method="post">
+                <label>Email</label>
+                <div class="form">
+                    <input type="text" name="email" autocomplete="off">
+                    <button type="submit" disabled>Send</button>
+                </div>
+            </form>
+        {% endif %}
         <p>PARKING WITH EASE, HIGH SECURITY AND LOWER PRICE IS A <span>GOD GIFT PRESENTED</span></p>
         <p>Why <span>CHIS</span> with Inconvinient <span>CHORT</span>?</p>
     </footer>
