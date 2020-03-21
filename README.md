@@ -19,14 +19,14 @@ to do this, we write command:
 
 ### Linux / Macos
 ```
-source env/bin/activate
-python3 run.py
+$ source env/bin/activate
+$ python3 run.py
 ```
 
 ### Windows
 ```
-/env/bin/activate
-python3 run.py
+$ /env/bin/activate
+$ python3 run.py
 ```
 
 ## System Explaination
