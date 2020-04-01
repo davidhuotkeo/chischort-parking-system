@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+
+{% block file %}
+<link rel="stylesheet" href="/static/css/login.css">
+{% endblock %}
+
+{% block title %} ChisChort Authentication {% endblock %}
+
+{% block body %}
+<div class="login-page">
+    {% if added %}
+    <p style="color: green;">Added</p>
+    {% endif %}
+    <div class="form">
+        <form class="login-form" method="POST">
+            <input type="text" placeholder="Lane ID" name="lane"/>
+            <input type="number" placeholder="Base Price" name="price"/>
+            <input type="number" placeholder="Add on Price" name="add">
+            <button type="submit">Add</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -2,6 +2,12 @@ from random import randint
 import base64
 from datetime import datetime
 from werkzeug.security import check_password_hash
+from uuid import uuid1
+
+def generate_lane_id():
+    id_ = str(uuid1()).replace("-", "")
+    id_ = id_[:16]
+    return id_
 
 def generate_id(end_num):
     num = randint(0, end_num)

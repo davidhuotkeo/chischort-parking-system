@@ -199,6 +199,21 @@ def scanner():
         return redirect(url_for("login"))
     return render_template("scanner.html")
 
+@app.route("/chischort/addlane", methods=["GET", "POST"])
+def addlane():
+    admin = session["user"]
+    lane_added = False
+    if not admin:
+        return redirect(url_for("login"))
+    if request.method == "POST":
+        lane = request.form["lane"]
+        base_price = request.form["price"]
+        add_on = request.form["add"]
+        lane = LaneId(lane, base_price, add_on)
+        add_to_database(db, lane)
+        lane_added = True
+    return render_template("add-lane.html", added=lane_added)
+    
 @app.route("/not_found", methods=["GET"])
 def not_found():
     return render_template("404.html")

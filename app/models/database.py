@@ -1,5 +1,5 @@
 from app import app
-from app.utils.utilities import generate_id, get_date
+from app.utils.utilities import generate_lane_id, get_date
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy(app)
@@ -28,8 +28,8 @@ class LaneId(db.Model):
     base_price = db.Column(db.Integer)
     add_on = db.Column(db.Integer)
 
-    def __init__(self, lane, lane_id, base_price, add_on):
+    def __init__(self, lane, base_price, add_on):
         self.lane = lane
-        self.lane_id = lane_id
+        self.lane_id = generate_lane_id()
         self.base_price = base_price
         self.add_on = add_on
