@@ -16,7 +16,7 @@ from app.models.database import Parking, LaneId
 from sqlalchemy import and_
 
 # Load utils functions
-from app.utils.utilities import add_to_database, get_date
+from app.utils.utilities import add_to_database, get_date, generate_id
 from app.utils.view_utils import (
     from_string_to_base64,
     calculate_money,
@@ -43,7 +43,7 @@ def service(token_id):
     lane = LaneId.query.filter(LaneId.lane_id == token_id).first()
     if not lane:
         return redirect(url_for("not_found"))
-
+    max_number_ticket = 999999999
     # get the location if the lane is exist in database
     location = lane.lane
 
@@ -73,19 +73,18 @@ def service(token_id):
         key, encrypted = encrypt_cipher(token_id)
         session["key"] = key
 
+        _id = generate_id(max_number_ticket)
+        ticket_numbers = Parking.query.with_entities(Parking._id).all()
+        tickets = [ticket[0] for ticket in ticket_numbers]
+
+        while _id in tickets:
+            _id = generate_id(max_number_ticket)
+
         # add to database
-        parking = Parking(location, service_chosen, encrypted)
+        parking = Parking(_id, location, service_chosen, encrypted)
         add_to_database(db, parking)
 
-        park = Parking.query.filter(
-            and_(
-                Parking.location == location,
-                Parking.end == None
-            )
-        ).first()
-
         user_email = session.get("email")
-        _id = park._id
         qrcode_base = from_string_to_base64(_id)
         message = f"""
         <html>
@@ -175,7 +174,7 @@ def scanned(ticket_id):
     except:
         pass
 
-    return render_template("result.html", status=ticket_status, price=ticket_price)
+    return render_template("result.html", status=ticket_status, price=ticket_price, lane=ticket.location)
 
 @app.route("/chischort/authentication/login", methods=["GET", "POST"])
 def login():

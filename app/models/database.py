@@ -4,8 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy(app)
 
-end_number = 999999
-
 class Parking(db.Model):
     _id = db.Column(db.String(10), primary_key=True)
     location = db.Column(db.String(10))
@@ -15,8 +13,8 @@ class Parking(db.Model):
     payment = db.Column(db.Integer)
     encryption = db.Column(db.String(150))
 
-    def __init__(self, location, service, encryption):
-        self._id = generate_id(end_number)
+    def __init__(self, _id, location, service, encryption):
+        self._id = _id
         self.location = location
         self.service = service
         self.park = get_date()
