@@ -92,3 +92,22 @@ body {
   .container .info span .fa {
     color: #EF3B3A;
   }
+
+
+#multiple {
+    display: none;
+}
+
+#checkbox {
+    width: 20px;
+}
+
+.check {
+    display: flex;
+}
+
+.error {
+    color: #EF3B3A;
+    margin: 0;
+    text-align: start;
+}

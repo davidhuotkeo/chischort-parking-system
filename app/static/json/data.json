@@ -1,7 +1,7 @@
 {
     "service": {
         "normal": 0,
-        "tire": 200
+        "tire": 500
     },
     "db": {
         "user": "root",

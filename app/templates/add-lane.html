@@ -13,11 +13,20 @@
     {% endif %}
     <div class="form">
         <form class="login-form" method="POST">
-            <input type="text" placeholder="Lane ID" name="lane"/>
-            <input type="number" placeholder="Base Price" name="price"/>
-            <input type="number" placeholder="Add on Price" name="add">
+            <input type="text" placeholder="Lane ID" name="lane" required/>
+            <input type="number" placeholder="Base Price" name="price" minlength="3" required/>
+            <input type="number" placeholder="Add on Price" name="add" minlength="3" required>
+            <input type="text" placeholder="Place Name" name="place" required>
+            <div class="check">
+                <input type="checkbox" name="multiple" value="." id="checkbox">
+                <label>Add multiple lanes</label>
+            </div>
+            <input type="number" placeholder="How many place you would like to add" name="numberplace" id="multiple">
             <button type="submit">Add</button>
         </form>
     </div>
 </div>
+
+<script src="/static/js/add.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 {% endblock %}

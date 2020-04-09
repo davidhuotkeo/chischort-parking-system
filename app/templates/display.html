@@ -1,0 +1,51 @@
+{% extends "template.html" %}
+
+{% block file %}
+    <link rel="stylesheet" href="/static/css/display.css">
+{% endblock %}
+
+{% block title %} ChisChort Lanes {% endblock %}
+
+{% block body %}
+<div class="table">
+    <div class="input">
+        <input type="text" id="search" placeholder="Search Term Here">
+        <button class="search">Search</button>
+    </div>
+    <div id="table">
+        <table>
+            <tr>
+                <th>Lane</th>
+                <th>Lane ID</th>
+                <th>Base Price</th>
+                <th>Add On</th>
+                <th>Place</th>
+            </tr>
+            {% for l in lane %}
+                <tr>
+                    <td>{{ l.lane }}</td>
+                    <td>{{ l.lane_id }}</td>
+                    <td>{{ l.base_price }}</td>
+                    <td>{{ l.add_on }}</td>
+                    <td>{{ l.place }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+<script>
+    let button = $('button');
+    let search = $('#search');
+    function searchFunction() {
+        searchValue = search.val()
+        window.location.href = `/chischort/display/lane?search=${searchValue}`
+    }
+    button.click(searchFunction)
+    search.on("keypress", function(e) {
+        if (e.which == 13) {
+            searchFunction()
+        }
+    })
+</script>
+{% endblock %}

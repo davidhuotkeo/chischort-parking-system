@@ -16,7 +16,12 @@ from app.models.database import Parking, LaneId
 from sqlalchemy import and_
 
 # Load utils functions
-from app.utils.utilities import add_to_database, get_date, generate_id
+from app.utils.utilities import (
+    add_to_database,
+    get_date,
+    generate_id,
+    continue_lane
+)
 from app.utils.view_utils import (
     from_string_to_base64,
     calculate_money,
@@ -178,6 +183,7 @@ def scanned(ticket_id):
 
 @app.route("/chischort/authentication/login", methods=["GET", "POST"])
 def login():
+    args = request.args.get("type")
     # login for the security
     if request.method == "POST":
         # get the form input
@@ -187,7 +193,9 @@ def login():
         # if match the user given
         if username == "chis" and password == "chort":
             session["user"] = "admin"
-            return redirect(url_for("scanner"))
+            if args == "scanner":
+                return redirect(url_for("scanner"))
+            return redirect(url_for("addlane"))
     return render_template("login.html")
 
 @app.route("/scanner", methods=["GET"])
@@ -196,23 +204,40 @@ def scanner():
     # if not login, we will not given the authorization
     # and return redirect to the login page
     if not session.get("user"):
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
     return render_template("scanner.html")
 
 @app.route("/chischort/addlane", methods=["GET", "POST"])
 def addlane():
-    admin = session["user"]
+    admin = session.get("user")
     lane_added = False
     if not admin:
         return redirect(url_for("login"))
     if request.method == "POST":
-        lane = request.form["lane"]
+        lane_name = request.form["lane"]
         base_price = request.form["price"]
         add_on = request.form["add"]
-        lane = LaneId(lane, base_price, add_on)
-        add_to_database(db, lane)
+        place = request.form["place"]
+        multiple = request.form.get("numberplace")
+        if multiple:
+            continue_lane(db, LaneId, lane_name, multiple, base_price, add_on, place)
+        else:
+            lane = LaneId(lane_name, base_price, add_on, place)
+            add_to_database(db, lane)
         lane_added = True
+        return redirect(url_for("display"))
     return render_template("add-lane.html", added=lane_added)
+
+@app.route("/chischort/display/lane", methods=["GET"])
+def display():
+    admin = session.get("user")
+    query = request.args.get("search")
+    parking_lane = LaneId.query.order_by(LaneId.lane_id).all()
+    if query:
+        parking_lane = LaneId.query.filter(LaneId.place == query).all()
+    if not admin:
+        return redirect(url_for("home"))
+    return render_template("display.html", lane=parking_lane)
     
 @app.route("/not_found", methods=["GET"])
 def not_found():

@@ -27,9 +27,11 @@ class LaneId(db.Model):
     lane_id = db.Column(db.String(20))
     base_price = db.Column(db.Integer)
     add_on = db.Column(db.Integer)
+    place = db.Column(db.String(100))
 
-    def __init__(self, lane, base_price, add_on):
+    def __init__(self, lane, base_price, add_on, place):
         self.lane = lane
         self.lane_id = generate_lane_id()
         self.base_price = base_price
         self.add_on = add_on
+        self.place = place
