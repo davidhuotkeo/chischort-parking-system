@@ -30,7 +30,7 @@ from app.utils.view_utils import (
     decrypt_cipher,
     send_email
 )
-from app.utils.file import service_parking
+from app.utils.file import service_parking, login_username, login_password
 
 # Home Route
 @app.route("/", methods=["GET", "POST"])
@@ -191,7 +191,7 @@ def login():
         password = request.form["password"]
 
         # if match the user given
-        if username == "chis" and password == "chort":
+        if username == login_username and password == login_password:
             session["user"] = "admin"
             if args == "scanner":
                 return redirect(url_for("scanner"))
@@ -232,9 +232,9 @@ def addlane():
 def display():
     admin = session.get("user")
     query = request.args.get("search")
-    parking_lane = LaneId.query.order_by(LaneId.lane_id).all()
+    parking_lane = LaneId.query.order_by(LaneId.lane).all()
     if query:
-        parking_lane = LaneId.query.filter(LaneId.place == query).all()
+        parking_lane = LaneId.query.filter(LaneId.place.like("%{}%".format(query))).all()
     if not admin:
         return redirect(url_for("home"))
     return render_template("display.html", lane=parking_lane)

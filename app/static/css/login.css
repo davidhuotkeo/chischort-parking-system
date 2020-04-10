@@ -111,3 +111,8 @@ body {
     margin: 0;
     text-align: start;
 }
+
+#display {
+    margin-top: 20px;
+    background-color: sandybrown;
+}

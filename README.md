@@ -18,6 +18,12 @@ This makes it easier for us to inspect in each laptop locally.
 to do this, we write command:
 
 ### Linux / Macos
+Adding path environment
+```
+export CHISCHORT_USERNAME="sth you would like to put"
+export CHISCHORT_PASSWORD="sth you would like to put"
+```
+
 ```
 $ source env/bin/activate
 $ python3 run.py
