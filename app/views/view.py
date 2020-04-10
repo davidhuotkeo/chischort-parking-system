@@ -72,9 +72,6 @@ def service(token_id):
         # get the service from chosen service
         service_chosen = form.get("service")
 
-        # get the add on service (check tire)
-        payment = service_parking[service_chosen]
-
         key, encrypted = encrypt_cipher(token_id)
         session["key"] = key
 
@@ -90,7 +87,6 @@ def service(token_id):
         add_to_database(db, parking)
 
         user_email = session.get("email")
-        qrcode_base = from_string_to_base64(_id)
         message = f"""
         <html>
             <body>
